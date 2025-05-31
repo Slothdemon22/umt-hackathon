@@ -94,7 +94,7 @@ const LandingPage = () => {
 
 
       {/* Enhanced Hero Section */}
-      <section className="relative py-40 md:py-14">
+      <section className="relative py-40 md:py-13">
       
 
         <div className="container mx-auto px-8 relative">

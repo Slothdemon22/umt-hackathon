@@ -29,8 +29,16 @@ export default function RootLayout({
   return (
     <ClerkProvider>
       <html lang="en" className="dark">
-        <body className={`${geistSans.variable} ${geistMono.variable} min-h-screen bg-slate-950 text-white antialiased`}>
+        <body className={`${geistSans.variable} ${geistMono.variable} min-h-screen bg-gradient-to-br from-slate-950 via-purple-950/20 to-slate-950 text-white antialiased`}>
           <UserRegistration>
+            <div className="min-h-screen flex flex-col">
+              <header className="h-32 bg-gradient-to-br from-slate-950 via-purple-950/20 to-slate-950 relative">
+                <Navbar />
+              </header>
+              <main className="flex-1">
+                {children}
+              </main>
+            </div>
             <Toaster 
               position="top-right"
               toastOptions={{
@@ -41,8 +49,6 @@ export default function RootLayout({
                 },
               }}
             />
-            <Navbar />
-            {children}
           </UserRegistration>
         </body>
       </html>

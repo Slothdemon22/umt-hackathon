@@ -105,15 +105,16 @@ export function Navbar({ notificationCount = 0 }: FloatingNavbarProps) {
   return (
     <header
       className={cn(
-        "fixed top-0 left-0 right-0 z-50 transition-all duration-500 ease-out",
+        "fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-50 transition-all duration-500 ease-out w-[95%] max-w-7xl",
         scrolled
-          ? "bg-black/20 backdrop-blur-xl border-b border-white/10 shadow-2xl shadow-purple-500/10 py-2"
-          : "bg-transparent py-4",
+          ? "bg-black/20 backdrop-blur-xl border border-purple-500/20 shadow-[0_0_15px_rgba(168,85,247,0.15)] shadow-purple-500/20"
+          : "bg-black/10 backdrop-blur-lg border border-purple-400/10 shadow-[0_0_10px_rgba(168,85,247,0.1)]",
+        "rounded-full px-4 relative before:absolute before:inset-0 before:rounded-full before:bg-gradient-to-r before:from-purple-500/10 before:via-transparent before:to-purple-500/10 before:opacity-0 hover:before:opacity-100 before:transition-opacity before:duration-500"
       )}
     >
-      <div className="container mx-auto px-4 flex items-center justify-between">
+      <div className="container mx-auto px-2 py-3 flex items-center justify-between relative z-10">
         {/* Logo */}
-        <Link href="/" className="flex items-center gap-3 z-10 group">
+        <Link href="/" className="flex items-center gap-3 z-10 group pl-2">
           <div className="relative">
             <div className="h-10 w-10 bg-gradient-to-br from-purple-600 via-violet-600 to-indigo-600 rounded-xl flex items-center justify-center shadow-lg shadow-purple-500/25 group-hover:shadow-purple-500/40 transition-all duration-300 group-hover:scale-105">
               <Compass className="h-5 w-5 text-white group-hover:rotate-12 transition-transform duration-300" />
@@ -248,7 +249,7 @@ export function Navbar({ notificationCount = 0 }: FloatingNavbarProps) {
       {/* Expandable Search Bar */}
       <div
         className={cn(
-          "absolute left-0 right-0 top-full bg-black/30 backdrop-blur-xl transition-all duration-500 overflow-hidden border-b border-white/10",
+          "absolute left-1/2 -translate-x-1/2 top-full mt-2 w-[95%] max-w-7xl bg-black/30 backdrop-blur-xl transition-all duration-500 overflow-hidden border border-purple-500/20 rounded-2xl shadow-[0_0_10px_rgba(168,85,247,0.1)]",
           searchOpen ? "max-h-24 py-4 opacity-100" : "max-h-0 py-0 opacity-0",
         )}
       >
@@ -267,7 +268,7 @@ export function Navbar({ notificationCount = 0 }: FloatingNavbarProps) {
       {/* Mobile Menu */}
       <div
         className={cn(
-          "absolute left-0 right-0 top-full bg-black/30 backdrop-blur-xl transition-all duration-500 overflow-hidden border-b border-white/10 md:hidden",
+          "absolute left-1/2 -translate-x-1/2 top-full mt-2 w-[95%] max-w-7xl bg-black/30 backdrop-blur-xl transition-all duration-500 overflow-hidden border border-purple-500/20 rounded-2xl shadow-[0_0_10px_rgba(168,85,247,0.1)] md:hidden",
           mobileMenuOpen ? "max-h-[500px] opacity-100" : "max-h-0 opacity-0",
         )}
       >
@@ -343,10 +344,10 @@ function NavLink({ href, children }: { href: string; children: React.ReactNode }
   return (
     <Link
       href={href}
-      className="relative px-4 py-2 text-white/70 hover:text-white font-medium transition-all duration-300 rounded-lg hover:bg-white/10 backdrop-blur-sm group"
+      className="relative px-4 py-2 text-white/70 hover:text-white font-medium transition-all duration-300 rounded-full hover:bg-white/10 hover:shadow-[0_0_10px_rgba(168,85,247,0.1)] backdrop-blur-sm group"
     >
       {children}
-      <div className="absolute inset-x-0 bottom-0 h-0.5 bg-gradient-to-r from-purple-500 to-violet-500 scale-x-0 group-hover:scale-x-100 transition-transform duration-300 rounded-full" />
+      <div className="absolute inset-x-2 bottom-1 h-0.5 bg-gradient-to-r from-purple-500 to-violet-500 scale-x-0 group-hover:scale-x-100 transition-transform duration-300 rounded-full shadow-[0_0_5px_rgba(168,85,247,0.3)]" />
     </Link>
   )
 }
@@ -356,12 +357,12 @@ function MobileNavLink({ href, onClick, children }: { href: string; onClick?: ()
   return (
     <Link
       href={href}
-      className="px-4 py-3 text-white/80 hover:text-white font-medium transition-all duration-300 rounded-lg hover:bg-white/10 backdrop-blur-sm flex items-center group"
+      className="px-4 py-3 text-white/80 hover:text-white font-medium transition-all duration-300 rounded-full hover:bg-white/10 hover:shadow-[0_0_10px_rgba(168,85,247,0.1)] backdrop-blur-sm flex items-center group"
       onClick={onClick}
     >
       <span className="relative">
         {children}
-        <div className="absolute inset-x-0 bottom-0 h-0.5 bg-gradient-to-r from-purple-500 to-violet-500 scale-x-0 group-hover:scale-x-100 transition-transform duration-300 rounded-full" />
+        <div className="absolute inset-x-0 bottom-0 h-0.5 bg-gradient-to-r from-purple-500 to-violet-500 scale-x-0 group-hover:scale-x-100 transition-transform duration-300 rounded-full shadow-[0_0_5px_rgba(168,85,247,0.3)]" />
       </span>
     </Link>
   )
